@@ -7,7 +7,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "Ac0-nomad";
+  networking.hostName = "Ac0-Nomad";
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Los_Angeles";
@@ -29,10 +29,10 @@
     auto-optimise-store = true;
   };
 
-  users.users.xboxzzaw13 = {
+  users.users.username = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "input" ];
-    initialPassword = "changeme";
+    initialPassword = "123456";
   };
 
   programs.hyprland = {
@@ -57,7 +57,7 @@
   };
   security.rtkit.enable = true;
 
-  environment.systemPackages = with pkgs; [ kitty vim firefox ];
+  environment.systemPackages = with pkgs; [ kitty nevim firefox ];
 
   system.stateVersion = "26.05";
 }
