@@ -29,10 +29,10 @@
     auto-optimise-store = true;
   };
 
-  users.users.username = {
+  users.users.xboxzzaw13 = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "input" ];
-    initialPassword = "123456";
+    initialPassword = "changeme";
   };
 
   programs.hyprland = {
@@ -48,6 +48,14 @@
     };
   };
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
+      PermitRootLogin = "no";
+    };
+  };
+
   services.libinput.enable = true;
 
   services.pipewire = {
@@ -57,7 +65,7 @@
   };
   security.rtkit.enable = true;
 
-  environment.systemPackages = with pkgs; [ kitty nevim firefox ];
+  environment.systemPackages = with pkgs; [ kitty neovim firefox fastfetch];
 
   system.stateVersion = "26.05";
 }
