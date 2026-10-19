@@ -54,6 +54,11 @@
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
   };
+  nix.gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 14d"
+  };
 
   users.users.xboxzzaw13 = {
     isNormalUser = true;
