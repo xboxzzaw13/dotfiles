@@ -109,7 +109,7 @@
     git wget curl btop yazi
     mako grim slurp wl-clipboard cliphist pavucontrol
     waybar hyprlock hypridle hyprpaper rofi
-    playctl brightnessctl
+    playerctl brightnessctl
   ];
 
   system.stateVersion = "26.05";
