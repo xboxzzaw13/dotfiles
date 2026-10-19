@@ -23,7 +23,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
-    noto-fonts-emoji
+    noto-fonts-color-emoji
   ];
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "Noto Sans CJK SC" "Noto Sans" ];
@@ -37,7 +37,7 @@
     type = "fcitx5";
     fcitx5 = {
       waylandFrontend = true;
-      addons = with pkgs; [ fcitx5-chinese-addons fcitx5-gtk fcitx5-qt ];
+      addons = with pkgs; [ pkgs.qt6Packages.fcitx5-chinese-addons ];
     };
   };
 
@@ -57,7 +57,7 @@
   nix.gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 14d"
+      options = "--delete-older-than 14d";
   };
 
   users.users.xboxzzaw13 = {
@@ -104,7 +104,8 @@
 
   environment.systemPackages = with pkgs; [
     kitty neovim firefox fastfetch
-    git wget curl btop
+    git wget curl btop yazi
+    mako grim slurp wl-clipboard cliphist pavucontrol
   ];
 
   system.stateVersion = "26.05";
