@@ -86,15 +86,21 @@
       PermitRootLogin = "no";
     };
   };
-
   services.libinput.enable = true;
-
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
   };
   security.rtkit.enable = true;
+  services.upower.enable = true;
+  services.fwupd.enable = true;
+  services.power-profiles-daemon.enable = true;
+  services.blueman.enable = true;
+  services.journald.extraConfig = ''
+    SystemMaxUse=500M
+    MaxRetentionSec=1month
+  '';
 
   environment.systemPackages = with pkgs; [ kitty neovim firefox fastfetch];
 
