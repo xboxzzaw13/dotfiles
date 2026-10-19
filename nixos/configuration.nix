@@ -102,7 +102,10 @@
     MaxRetentionSec=1month
   '';
 
-  environment.systemPackages = with pkgs; [ kitty neovim firefox fastfetch];
+  environment.systemPackages = with pkgs; [
+    kitty neovim firefox fastfetch
+    git wget curl btop
+  ];
 
   system.stateVersion = "26.05";
 }
