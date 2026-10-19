@@ -18,6 +18,28 @@
   time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "us";
+  
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-emoji
+  ];
+  fonts.fontconfig.defaultFonts = {
+    sansSerif = [ "Noto Sans CJK SC" "Noto Sans" ];
+    serif     = [ "Noto Serif CJK SC" "Noto Serif" ];
+    monospace = [ "Noto Sans Mono CJK SC" "DejaVu Sans Mono" ];
+    emoji     = [ "Noto Color Emoji" ];
+  };
+
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = with pkgs; [ fcitx5-chinese-addons fcitx5-gtk fcitx5-qt ];
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
