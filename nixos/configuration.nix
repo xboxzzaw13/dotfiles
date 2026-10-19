@@ -70,7 +70,6 @@
     enable = true;
     xwayland.enable = true;
   };
-
   services.greetd = {
     enable = true;
     settings.default_session = {
@@ -78,6 +77,7 @@
       user = "greeter";
     };
   };
+  security.polkit.enable = true;
 
   services.openssh = {
     enable = true;
