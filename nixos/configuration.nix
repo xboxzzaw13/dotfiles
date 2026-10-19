@@ -17,8 +17,8 @@
   time.timeZone = "America/Los_Angeles";
   time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "us";
-  
+  console.keyMap = "us"; 
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
@@ -37,7 +37,7 @@
     type = "fcitx5";
     fcitx5 = {
       waylandFrontend = true;
-      addons = with pkgs; [ pkgs.qt6Packages.fcitx5-chinese-addons ];
+      addons = [ pkgs.qt6Packages.fcitx5-chinese-addons ];
     };
   };
 
