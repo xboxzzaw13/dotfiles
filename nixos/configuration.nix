@@ -97,10 +97,10 @@
   services.fwupd.enable = true;
   services.power-profiles-daemon.enable = true;
   services.blueman.enable = true;
-  services.journald.extraConfig = ''
-    SystemMaxUse=500M
-    MaxRetentionSec=1month
-  '';
+  services.journald.settings.Journal = {
+    SystemMaxUse= "500M";
+    MaxRetentionSec= "1month";
+  };
 
   environment.systemPackages = with pkgs; [
     kitty neovim firefox fastfetch
