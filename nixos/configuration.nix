@@ -8,6 +8,9 @@
   boot.loader.systemd-boot.configurationLimit = 10;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  hardware.enableRedistributableFirmware = true;
+  hardware.bluetooth.enable = true;
+
   networking.hostName = "Ac0-Nomad";
   networking.networkmanager.enable = true;
 
