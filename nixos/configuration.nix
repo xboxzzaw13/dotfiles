@@ -20,6 +20,8 @@
   console.keyMap = "us"; 
 
   fonts.packages = with pkgs; [
+    spleen
+    unifont
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
@@ -28,7 +30,7 @@
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "Noto Sans CJK SC" "Noto Sans" ];
     serif     = [ "Noto Serif CJK SC" "Noto Serif" ];
-    monospace = [ "Noto Sans Mono CJK SC" "DejaVu Sans Mono" ];
+    monospace = [ "Spleen 16x32" "Unifont" ];
     emoji     = [ "Noto Color Emoji" ];
   };
 
