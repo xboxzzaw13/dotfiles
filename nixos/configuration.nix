@@ -17,7 +17,7 @@
   time.timeZone = "America/Los_Angeles";
   time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "us"; 
+  console.keyMap = "us";
 
   fonts.packages = with pkgs; [
     spleen
@@ -108,6 +108,8 @@
     kitty neovim firefox fastfetch
     git wget curl btop yazi
     mako grim slurp wl-clipboard cliphist pavucontrol
+    waybar hyprlock hypridle hyprpaper rofi
+    playctl brightnessctl
   ];
 
   system.stateVersion = "26.05";
