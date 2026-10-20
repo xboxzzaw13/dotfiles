@@ -20,8 +20,7 @@
   console.keyMap = "us";
 
   fonts.packages = with pkgs; [
-    spleen
-    unifont
+    maple-mono."Normal-CN"
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
@@ -30,7 +29,7 @@
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "Noto Sans CJK SC" "Noto Sans" ];
     serif     = [ "Noto Serif CJK SC" "Noto Serif" ];
-    monospace = [ "Spleen 16x32" "Unifont" ];
+    monospace = [ "Maple Mono CN" ];
     emoji     = [ "Noto Color Emoji" ];
   };
 
@@ -110,6 +109,7 @@
     mako grim slurp wl-clipboard cliphist pavucontrol
     waybar hyprlock hypridle hyprpaper rofi
     playerctl brightnessctl
+    python3
   ];
 
   system.stateVersion = "26.05";
