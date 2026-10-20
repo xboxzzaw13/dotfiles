@@ -29,7 +29,7 @@
   fonts.fontconfig.defaultFonts = {
     sansSerif = [ "Noto Sans CJK SC" "Noto Sans" ];
     serif     = [ "Noto Serif CJK SC" "Noto Serif" ];
-    monospace = [ "Maple Mono CN" ];
+    monospace = [ "Maple Mono Normal CN" ];
     emoji     = [ "Noto Color Emoji" ];
   };
 
