@@ -9,4 +9,4 @@
       modules = [ ./configuration.nix ];
     };
   };
-}
+} 
