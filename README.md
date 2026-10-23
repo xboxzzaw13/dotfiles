@@ -1,1 +1,1 @@
-This my dotfiles.
+This is my NixOS dotfiles.
