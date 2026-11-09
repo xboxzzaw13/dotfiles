@@ -1,0 +1,145 @@
+{
+  "extensions": {
+    "vimium-c@gdh1995.cn": {
+      "name": "Vimium C",
+      "local": {
+        "autoDarkMode": 1,
+        "smoothScroll": true,
+        "grabBackFocus": false
+      },
+      "keyMappings": [
+        "map <a-j> previousTab",
+        "map <a-k> nextTab"
+      ],
+      "searchEngines": [
+        "g: https://www.google.com/search?q=$s Google",
+        "bing: https://www.bing.com/search?q=$s Bing",
+        "bd: https://www.baidu.com/s?wd=$s 百度",
+        "gh: https://github.com/search?q=$s GitHub",
+        "bili: https://search.bilibili.com/all?keyword=$s 哔哩哔哩",
+        "yt: https://www.youtube.com/results?search_query=$s YouTube"
+      ],
+      "exclusionRules": [
+        {"pattern": ":https://www.youtube.com/watch", "passKeys": "j k l m t c <space> "},
+        {"pattern": ":https://www.youtube.com/shorts/", "passKeys": "j k l m t c <space> "},
+        {"pattern": ":https://www.bilibili.com/video/", "passKeys": "j k l J K L t T c C p P m M W <space> "},
+        {"pattern": ":https://www.bilibili.com/bangumi/", "passKeys": "j k l J K L t T c C p P m M W <space> "}
+      ]
+    },
+    "{2e5ff8c8-32fe-46d0-9fc8-6b8986621f3c}": {
+      "name": "Search by Image",
+      "local": {
+        "appTheme": "dark",
+        "searchModeAction": "capture",
+        "searchModeContextMenu": "selectUrl",
+        "searchAllEnginesAction": "false",
+        "searchAllEnginesContextMenu": "false",
+        "showInContextMenu": true,
+        "showEngineIcons": true,
+        "showContribPage": false,
+        "pinActionToolbarContribute": false
+      },
+      "enabledEngines": ["googleLens", "yandex", "bing", "baidu"]
+    },
+    "addon@darkreader.org": {
+      "name": "Dark Reader",
+      "local": {
+        "enabled": true,
+        "detectDarkTheme": true,
+        "changeBrowserTheme": false,
+        "theme": {
+          "mode": 1,
+          "engine": "dynamicTheme",
+          "brightness": 100,
+          "contrast": 100,
+          "darkSchemeBackgroundColor": "#1e1e2e",
+          "darkSchemeTextColor": "#cdd6f4",
+          "darkColorScheme": "Default"
+        }
+      },
+      "disabledFor": ["youtube.com", "bilibili.com"]
+    },
+    "sponsorBlocker@ajay.app": {
+      "name": "SponsorBlock",
+      "sync": {
+        "categorySelections": [
+          {"name": "sponsor", "option": 2},
+          {"name": "selfpromo", "option": 2},
+          {"name": "interaction", "option": 2},
+          {"name": "intro", "option": 1},
+          {"name": "outro", "option": 1},
+          {"name": "preview", "option": 1},
+          {"name": "poi_highlight", "option": 1},
+          {"name": "exclusive_access", "option": 0},
+          {"name": "chapter", "option": 0}
+        ]
+      }
+    },
+    "{3c078156-979c-498b-8990-85f7987dd929}": {
+      "name": "Sidebery",
+      "local": {
+        "settings": {
+          "tabsTree": true,
+          "colorScheme": "ff",
+          "snapInterval": 30,
+          "snapIntervalUnit": "min",
+          "snapLimit": 48,
+          "snapLimitUnit": "snap",
+          "snapExcludePrivate": true,
+          "snapAutoExport": false
+        }
+      }
+    },
+    "enhancerforyoutube@maximerf.addons.mozilla.org": {
+      "name": "Enhancer for YouTube",
+      "local": {
+        "blockautoplay": true,
+        "disableautoplay": true,
+        "pausevideos": true,
+        "selectquality": true,
+        "qualityvideos": "hd1080",
+        "qualityvideosfullscreen": "hd1080",
+        "qualityplaylists": "hd1080",
+        "qualityplaylistsfullscreen": "hd1080",
+        "darktheme": true,
+        "speedvariation": 0.25,
+        "boostvolume": false
+      }
+    },
+    "{5efceaa7-f3a2-4e59-a54b-85319448e305}": {
+      "name": "Immersive Translate",
+      "local": {
+        "fullLocalUserConfig": {
+          "interfaceLanguage": "zh-CN",
+          "targetLanguage": "zh-CN",
+          "translationMode": "dual",
+          "isEnableGuideTips": false,
+          "shortcuts": {
+            "toggleTranslatePage": "Alt+A",
+            "toggleTranslateTheWholePage": "Alt+W",
+            "translateInputBox": "Alt+I",
+            "toggleSidePanel": "Alt+S"
+          }
+        }
+      }
+    }
+  },
+  "linkswift": {
+    "setting_init": {"code": "", "license": "AGPL3", "version": "1.1.3"},
+    "setting_config_version": "1",
+    "setting_curl_terminal": "ls",
+    "setting_ui_theme": {
+      "color": "#cba6f7",
+      "custom": {
+        "$baidu": false,
+        "$aliyun": false,
+        "$mcloud": false,
+        "$tcloud": false,
+        "$xunlei": false,
+        "$quark": false,
+        "$uc": false,
+        "$123pan": false
+      }
+    }
+  }
+}
