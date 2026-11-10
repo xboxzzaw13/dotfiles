@@ -1,116 +1,37 @@
-{ config, lib, pkgs, ... }:
-
+{ lib, pkgs, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.configurationLimit = 10;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  hardware.enableRedistributableFirmware = true;
-  hardware.bluetooth.enable = true;
-
-  networking.hostName = "Ac0-Nomad";
-  networking.networkmanager.enable = true;
-
-  time.timeZone = "America/Los_Angeles";
-  time.hardwareClockInLocalTime = true;
-  i18n.defaultLocale = "en_US.UTF-8";
-  console.keyMap = "us";
-
-  fonts.packages = with pkgs; [
-    maple-mono."Normal-CN"
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-color-emoji
-  ];
-  fonts.fontconfig.defaultFonts = {
-    sansSerif = [ "Noto Sans CJK SC" "Noto Sans" ];
-    serif     = [ "Noto Serif CJK SC" "Noto Serif" ];
-    monospace = [ "Maple Mono Normal CN" ];
-    emoji     = [ "Noto Color Emoji" ];
-  };
-
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5 = {
-      waylandFrontend = true;
-      addons = [ pkgs.qt6Packages.fcitx5-chinese-addons ];
-    };
-  };
-
+  # Shared baseline; boot, hardware, users and stateVersion belong to hosts.
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
-    substituters = [
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://mirror.nju.edu.cn/nix-channels/store"
-    ];
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
     experimental-features = [ "nix-command" "flakes" ];
     auto-optimise-store = true;
+    # Replace NixOS's appended cache default to avoid duplicate official entries.
+    substituters = lib.mkForce [
+      "https://mirrors.ustc.edu.cn/nix-channels/store?priority=30"
+      "https://cache.nixos.org?priority=40"
+    ];
+    trusted-public-keys = lib.mkForce [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    ];
+    require-sigs = true;
   };
   nix.gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
   };
-
-  users.users.xboxzzaw13 = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" ];
-    initialPassword = "changeme";
-  };
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-  services.greetd = {
-    enable = true;
-    settings.default_session = {
-      command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
-      user = "greeter";
-    };
-  };
-  security.polkit.enable = true;
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = true;
-      PermitRootLogin = "no";
-    };
-  };
-  services.libinput.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-  };
-  security.rtkit.enable = true;
-  services.upower.enable = true;
-  services.fwupd.enable = true;
-  services.power-profiles-daemon.enable = true;
-  services.blueman.enable = true;
+  networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
+  services.openssh.enable = lib.mkDefault false;
+  security.sudo.wheelNeedsPassword = true;
+  time.timeZone = lib.mkDefault "Asia/Shanghai";
+  i18n.defaultLocale = "en_US.UTF-8";
+  console.keyMap = "us";
+  hardware.enableRedistributableFirmware = true;
   services.journald.settings.Journal = {
-    SystemMaxUse= "500M";
-    MaxRetentionSec= "1month";
+    SystemMaxUse = "500M";
+    MaxRetentionSec = "1month";
   };
-
-  environment.systemPackages = with pkgs; [
-    kitty neovim firefox fastfetch
-    git wget curl btop yazi
-    mako grim slurp wl-clipboard cliphist pavucontrol
-    waybar hyprlock hypridle hyprpaper rofi
-    playerctl brightnessctl
-    python3
-  ];
-
-  system.stateVersion = "26.05";
+  # Recovery tools remain available even if Home Manager fails.
+  environment.systemPackages = with pkgs; [ git vim curl wget pciutils usbutils ];
 }
